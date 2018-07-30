@@ -5,18 +5,18 @@ import (
 	"context"
 	"fmt"
 
-	"Github.com/ethereum/go-ethereum/common"
-	"Github.com/ethereum/go-ethereum/ethclient"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethclient"
 )
 
 func main() {
 	conn, err := ethclient.Dial("https://mainnet.infura.io")
 	if err != nil {
-		log.Fatalf("Woops something went wrong!")
+		log.Fatal("Whoops something went wrong!", err)
 	}
 
 	ctx := context.Background()
-	tx, pending, _ := conn.TransactionByHash(ctx, common.HexToHash("0x6fb1730dab43028502058d41acb615a7c1b0ab2d108f729d310509c66f62cf26"))
+	tx, pending, _ := conn.TransactionByHash(ctx, common.HexToHash("0x30999361906753dbf60f39b32d3c8fadeb07d2c0f1188a32ba1849daac0385a8"))
 	if !pending {
 		fmt.Println(tx)
 	}
